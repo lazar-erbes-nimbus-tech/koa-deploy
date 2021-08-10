@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  koa-mongo:
+    container_name: koa-database
+    image: mongo:4
+    ports:
+      - 27017:27017
+
+  lazar:
+    build:
+      dockerfile: Dockerfile.prod
+      context: .
+    volumes: 
+      - ./:/usr/src/app
+    ports: 
+      - 3000:3000
